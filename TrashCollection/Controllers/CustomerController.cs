@@ -8,8 +8,10 @@ using TrashCollection.Models;
 
 namespace TrashCollection.Controllers
 {
+    
     public class CustomerController : Controller
     {
+        private ApplicationDbContext _context;
         // GET: Customer
         public ActionResult Index()
         {
@@ -37,12 +39,15 @@ namespace TrashCollection.Controllers
                 // TODO: Add insert logic here
                 string userId = User.Identity.GetUserId();
                 customer.ApplicationId = userId;
+                _context.Customers.Add(customer);
+                _context.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
             {
                 return View();
             }
+            
         }
 
         // GET: Customer/Edit/5

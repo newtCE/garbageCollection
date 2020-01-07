@@ -10,6 +10,7 @@ namespace TrashCollection.Controllers
 {
     public class EmployeeController : Controller
     {
+        private ApplicationDbContext _context;
         // GET: Employee
         public ActionResult Index()
         {
@@ -36,6 +37,8 @@ namespace TrashCollection.Controllers
             {
                 string userId = User.Identity.GetUserId();
                 employee.ApplicationId = userId;
+                _context.Employees.Add(employee);
+                _context.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
