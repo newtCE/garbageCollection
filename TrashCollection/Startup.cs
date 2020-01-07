@@ -40,7 +40,7 @@ namespace TrashCollection
                 user.UserName = "chris";
                 user.Email = "cpe@gmail.com";
 
-                string userPWD = "a";
+                string userPWD = "_Password1";
 
                 var chkUser = UserManager.Create(user, userPWD);
 
