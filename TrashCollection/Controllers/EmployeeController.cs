@@ -10,11 +10,14 @@ namespace TrashCollection.Controllers
 {
     public class EmployeeController : Controller
     {
-        private ApplicationDbContext _context;
+        private ApplicationDbContext _context=new ApplicationDbContext();
         // GET: Employee
-        public ActionResult Index()
+        public ActionResult Index(Employee employee)
         {
-            return View();
+            string userId = User.Identity.GetUserId();
+            employee.ApplicationId = userId;
+            var customerInZip = _context.Customers.Where(c => c.Zip == employee.Zip).ToList();
+            return View(customerInZip);
         }
 
         // GET: Employee/Details/5
@@ -39,7 +42,8 @@ namespace TrashCollection.Controllers
                 employee.ApplicationId = userId;
                 _context.Employees.Add(employee);
                 _context.SaveChanges();
-                return RedirectToAction("Index");
+                //var customerInZip = _context.Customers.Where(e=>e.Zip == employee.Zip).ToList();
+                return RedirectToAction("Index",employee);
             }
             catch
             {
