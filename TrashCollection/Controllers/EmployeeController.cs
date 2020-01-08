@@ -20,7 +20,10 @@ namespace TrashCollection.Controllers
                 employee = _context.Employees.Where(e => e.ApplicationId == userId).FirstOrDefault();
             }
             //employee.ApplicationId = userId;
-            var customerInZip = _context.Customers.Where(c => c.Zip == employee.Zip).ToList();
+            //DateTime.Now.DayOfWeek;
+            string todaysDate = DateTime.Now.ToShortDateString();
+            string currentDay = DateTime.Now.DayOfWeek.ToString();
+            var customerInZip = _context.Customers.Where(c => c.Zip == employee.Zip && c.PickupDay==currentDay||c.Zip==employee.Zip && c.ExtraPickupDate==todaysDate).ToList();
             return View(customerInZip);
         }
 

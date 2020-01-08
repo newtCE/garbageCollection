@@ -185,6 +185,10 @@
     <Compile Include="Migrations\202001071605069_secondMigration.Designer.cs">
       <DependentUpon>202001071605069_secondMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001081708355_AddedPickupDay.cs" />
+    <Compile Include="Migrations\202001081708355_AddedPickupDay.Designer.cs">
+      <DependentUpon>202001081708355_AddedPickupDay.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -279,6 +283,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202001071605069_secondMigration.resx">
       <DependentUpon>202001071605069_secondMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001081708355_AddedPickupDay.resx">
+      <DependentUpon>202001081708355_AddedPickupDay.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

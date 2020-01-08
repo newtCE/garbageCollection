@@ -126,6 +126,7 @@ namespace TrashCollection.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    //string typeUser=
                     return RedirectToLocal(model.ReturnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
