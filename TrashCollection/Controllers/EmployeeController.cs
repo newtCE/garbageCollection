@@ -15,7 +15,11 @@ namespace TrashCollection.Controllers
         public ActionResult Index(Employee employee)
         {
             string userId = User.Identity.GetUserId();
-            employee.ApplicationId = userId;
+            if(employee.Zip == null)
+            {
+                employee = _context.Employees.Where(e => e.ApplicationId == userId).FirstOrDefault();
+            }
+            //employee.ApplicationId = userId;
             var customerInZip = _context.Customers.Where(c => c.Zip == employee.Zip).ToList();
             return View(customerInZip);
         }
