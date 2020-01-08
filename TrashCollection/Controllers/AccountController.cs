@@ -81,7 +81,15 @@ namespace TrashCollection.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToAction("Index","Employee",model);//LOOOOK HEEEERRREEE LATTEERRR
+
+                    if (User.IsInRole("Customer") == true)
+                    {
+                        return RedirectToAction("LoginBuffer", model);
+                    }
+                    else
+                    {
+                        return RedirectToAction("LoginBuffer", model);
+                    }
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -90,6 +98,17 @@ namespace TrashCollection.Controllers
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return View(model);
+            }
+        }
+        public ActionResult LoginBuffer(LoginViewModel model)
+        {
+            if (User.IsInRole("Customer") == true)
+            {
+                return RedirectToAction("Index", "Customer", model);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Employee", model);
             }
         }
 

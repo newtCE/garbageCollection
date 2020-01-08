@@ -25,6 +25,7 @@ namespace TrashCollection.Models
         public string SuspendEnd { get; set; }
         public string ExtraPickupDate { get; set; }
         public string PickupDay { get; set; }
+        public bool ConfirmPickup { get; set; }
 
 
     }

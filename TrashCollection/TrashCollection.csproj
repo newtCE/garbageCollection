@@ -189,6 +189,10 @@
     <Compile Include="Migrations\202001081708355_AddedPickupDay.Designer.cs">
       <DependentUpon>202001081708355_AddedPickupDay.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001082001469_addNewPropertyConfirm.cs" />
+    <Compile Include="Migrations\202001082001469_addNewPropertyConfirm.Designer.cs">
+      <DependentUpon>202001082001469_addNewPropertyConfirm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -258,8 +262,8 @@
     <Content Include="Views\Employee\Create.cshtml" />
     <Content Include="Views\users\Index.cshtml" />
     <Content Include="Views\Role\Index.cshtml" />
-    <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -286,6 +290,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202001081708355_AddedPickupDay.resx">
       <DependentUpon>202001081708355_AddedPickupDay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001082001469_addNewPropertyConfirm.resx">
+      <DependentUpon>202001082001469_addNewPropertyConfirm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -32,6 +32,14 @@ namespace TrashCollection.Controllers
         {
             return View();
         }
+        public ActionResult Confirm(int id)
+        {
+            var confirmPickupUpdate = _context.Customers.Where(c => c.ID == id).FirstOrDefault();
+            confirmPickupUpdate.ConfirmPickup = true;
+            confirmPickupUpdate.Balance += 1.50;
+            _context.SaveChanges();
+            return RedirectToAction("Index","Employee");
+        }
 
         // GET: Employee/Create
         public ActionResult Create()
