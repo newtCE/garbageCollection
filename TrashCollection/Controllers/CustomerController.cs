@@ -61,7 +61,12 @@ namespace TrashCollection.Controllers
         [HttpPost]
         public ActionResult ChangePickup(Customer customer)
         {
-            return View();
+            string userId = User.Identity.GetUserId();
+            customer.ApplicationId = userId;
+            var customerToChange = _context.Customers.Where(e => e.ApplicationId == userId).FirstOrDefault();
+            customerToChange.PickupDay = customer.PickupDay;
+            _context.SaveChanges();
+            return RedirectToAction("Index", customerToChange);
         }
         public ActionResult SetSpecialPickup()
         {
@@ -70,7 +75,12 @@ namespace TrashCollection.Controllers
         [HttpPost]
         public ActionResult SetSpecialPickup(Customer customer)
         {
-            return View();
+            string userId = User.Identity.GetUserId();
+            customer.ApplicationId = userId;
+            var customerToChange = _context.Customers.Where(e => e.ApplicationId == userId).FirstOrDefault();
+            customerToChange.ExtraPickupDate = customer.ExtraPickupDate;
+            _context.SaveChanges();
+            return RedirectToAction("Index", customerToChange);
         }
         public ActionResult ChangeSuspend()
         {
@@ -79,7 +89,13 @@ namespace TrashCollection.Controllers
         [HttpPost]
         public ActionResult ChangeSuspend(Customer customer)
         {
-            return View();
+            string userId = User.Identity.GetUserId();
+            customer.ApplicationId = userId;
+            var customerToChange = _context.Customers.Where(e => e.ApplicationId == userId).FirstOrDefault();
+            customerToChange.SuspendStart = customer.SuspendStart;
+            customerToChange.SuspendEnd = customer.SuspendEnd;
+            _context.SaveChanges();
+            return RedirectToAction("Index", customerToChange);
         }
         // GET: Customer/Edit/5
         public ActionResult Edit(int id)
