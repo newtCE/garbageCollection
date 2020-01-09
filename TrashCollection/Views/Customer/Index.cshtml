@@ -4,36 +4,14 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Customer Hub</h2>
 <div>
-    <dt>
-        @Html.DisplayNameFor(model => model.Balance)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(model => model.Balance)
-    </dd>
-</div>
-<div>
-    <h4>Customer Info</h4>
+    <h4>
+        @Html.DisplayFor(model => model.FirstName)
+        @Html.DisplayFor(model => model.LastName)
+    </h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.StreetAddress)
         </dt>
@@ -107,6 +85,9 @@
         </dd>
     </dl>
 </div>
+<h4>Manage Your Services</h4>
 <p>
-
+    @Html.ActionLink("Change Pickup Day", "ChangePickup", Model) |
+    @Html.ActionLink("Add a Special Pickup Date", "SetSpecialPickup",Model) |
+    @Html.ActionLink("Change or Add Service Suspension", "ChangeSuspend",Model)
 </p>

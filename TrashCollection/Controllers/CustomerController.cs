@@ -54,7 +54,33 @@ namespace TrashCollection.Controllers
             }
             
         }
-
+        public ActionResult ChangePickup()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult ChangePickup(Customer customer)
+        {
+            return View();
+        }
+        public ActionResult SetSpecialPickup()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult SetSpecialPickup(Customer customer)
+        {
+            return View();
+        }
+        public ActionResult ChangeSuspend()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult ChangeSuspend(Customer customer)
+        {
+            return View();
+        }
         // GET: Customer/Edit/5
         public ActionResult Edit(int id)
         {
