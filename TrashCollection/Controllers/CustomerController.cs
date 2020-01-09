@@ -11,11 +11,16 @@ namespace TrashCollection.Controllers
     
     public class CustomerController : Controller
     {
-        private ApplicationDbContext _context;
+        private ApplicationDbContext _context = new ApplicationDbContext();//put this in a constructor to prevent memory leak
         // GET: Customer
-        public ActionResult Index()
+        public ActionResult Index(Customer customer)
         {
-            return View();
+            string userId = User.Identity.GetUserId();
+            if (customer.Zip == null)
+            {
+                customer = _context.Customers.Where(e => e.ApplicationId == userId).FirstOrDefault();
+            }
+            return View(customer);
         }
 
         // GET: Customer/Details/5
@@ -41,7 +46,7 @@ namespace TrashCollection.Controllers
                 customer.ApplicationId = userId;
                 _context.Customers.Add(customer);
                 _context.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index",customer);
             }
             catch
             {
