@@ -62,7 +62,7 @@ namespace TrashCollection.Controllers
         public ActionResult ChangePickup(Customer customer)
         {
             string userId = User.Identity.GetUserId();
-            customer.ApplicationId = userId;
+            //customer.ApplicationId = userId;
             var customerToChange = _context.Customers.Where(e => e.ApplicationId == userId).FirstOrDefault();
             customerToChange.PickupDay = customer.PickupDay;
             _context.SaveChanges();
@@ -76,7 +76,7 @@ namespace TrashCollection.Controllers
         public ActionResult SetSpecialPickup(Customer customer)
         {
             string userId = User.Identity.GetUserId();
-            customer.ApplicationId = userId;
+            //customer.ApplicationId = userId;
             var customerToChange = _context.Customers.Where(e => e.ApplicationId == userId).FirstOrDefault();
             customerToChange.ExtraPickupDate = customer.ExtraPickupDate;
             _context.SaveChanges();
@@ -90,7 +90,7 @@ namespace TrashCollection.Controllers
         public ActionResult ChangeSuspend(Customer customer)
         {
             string userId = User.Identity.GetUserId();
-            customer.ApplicationId = userId;
+            //customer.ApplicationId = userId;
             var customerToChange = _context.Customers.Where(e => e.ApplicationId == userId).FirstOrDefault();
             customerToChange.SuspendStart = customer.SuspendStart;
             customerToChange.SuspendEnd = customer.SuspendEnd;
