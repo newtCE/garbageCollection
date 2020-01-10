@@ -201,6 +201,10 @@
     <Compile Include="Migrations\202001092130060_reverttoprevioustypes.Designer.cs">
       <DependentUpon>202001092130060_reverttoprevioustypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001101515004_propertychangeonemployee.cs" />
+    <Compile Include="Migrations\202001101515004_propertychangeonemployee.Designer.cs">
+      <DependentUpon>202001101515004_propertychangeonemployee.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -275,6 +279,7 @@
     <Content Include="Views\Customer\ChangePickup.cshtml" />
     <Content Include="Views\Customer\SetSpecialPickup.cshtml" />
     <Content Include="Views\Customer\ChangeSuspend.cshtml" />
+    <Content Include="Views\Employee\IndexDay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -310,6 +315,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202001092130060_reverttoprevioustypes.resx">
       <DependentUpon>202001092130060_reverttoprevioustypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001101515004_propertychangeonemployee.resx">
+      <DependentUpon>202001101515004_propertychangeonemployee.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

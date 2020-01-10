@@ -10,24 +10,29 @@ namespace TrashCollection.Controllers
 {
     public class EmployeeController : Controller
     {
-        private ApplicationDbContext _context=new ApplicationDbContext();
-        string todaysDate = DateTime.Now.ToShortDateString();
-        string currentDay = DateTime.Now.DayOfWeek.ToString();
+       
+        private ApplicationDbContext _context = new ApplicationDbContext();
         // GET: Employee
-        public ActionResult Index(Employee employee,string todaysDate,string currentDay)
+        public ActionResult Index(Employee employee)
         {
             string userId = User.Identity.GetUserId();
             if(employee.Zip == null)
             {
                 employee = _context.Employees.Where(e => e.ApplicationId == userId).FirstOrDefault();
             }
-            //employee.ApplicationId = userId;
-            //DateTime.Now.DayOfWeek;
-            //var todaysDate = DateTime.Now;
-            var customerInZip = _context.Customers.Where(c => c.Zip == employee.Zip && c.PickupDay==currentDay||c.Zip==employee.Zip && c.ExtraPickupDate==todaysDate).ToList();
+            string todaysDate = employee.SearchDate.ToShortDateString();
+            string dayToDisplay = DateTime.Now.DayOfWeek.ToString();
+            var customerInZip = _context.Customers.Where(c => c.Zip == employee.Zip && c.PickupDay==dayToDisplay||c.Zip==employee.Zip && c.ExtraPickupDate==todaysDate).ToList();
             return View(customerInZip);
         }
-
+        public ActionResult IndexDay(string DayString)
+        {
+            string userId = User.Identity.GetUserId();
+            var employee = _context.Employees.Where(e => e.ApplicationId == userId).FirstOrDefault();
+            string dayToDisplay = DayString;
+            var customerInZip = _context.Customers.Where(c => c.Zip == employee.Zip && c.PickupDay == dayToDisplay).ToList();
+            return View(customerInZip);
+        }
         // GET: Employee/Details/5
         public ActionResult Details(int id)
         {

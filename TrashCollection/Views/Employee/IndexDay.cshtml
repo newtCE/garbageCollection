@@ -1,0 +1,103 @@
+﻿@model IEnumerable<TrashCollection.Models.Customer>
+
+@{
+    ViewBag.Title = "IndexDay";
+}
+
+<h2>Employee Hub</h2>
+
+<h3>@DateTime.Now.DayOfWeek's Local Pickups</h3>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StreetAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.State)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Zip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Balance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SuspendStart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SuspendEnd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExtraPickupDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConfirmPickup)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StreetAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zip)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Balance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SuspendStart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SuspendEnd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExtraPickupDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConfirmPickup)
+            </td>
+            <td>
+                @Html.ActionLink("Confirm Pickup", "Confirm", new { id = item.ID })
+            </td>
+        </tr>
+
+    }
+
+</table>
+<p>
+    @Html.ActionLink("View Today's Pickups Including Special Pickups", "Index")<br />
+    @Html.ActionLink("View Monday Pickups Only", "IndexDay", new { dayString = "Monday" })<br />
+    @Html.ActionLink("View Tuesday Pickups Only", "IndexDay", new { dayString = "Tuesday" })<br />
+    @Html.ActionLink("View Wednesday Pickups Only", "IndexDay", new { dayString = "Wednesday" })<br />
+    @Html.ActionLink("View Thursday Pickups Only", "IndexDay", new { dayString = "Thursday" })<br />
+    @Html.ActionLink("View Friday Pickups Only", "IndexDay", new { dayString = "Friday" })<br />
+    @Html.ActionLink("View Saturday Pickups Only", "IndexDay", new { dayString = "Saturday" })<br />
+    @Html.ActionLink("View Sunday Pickups Only", "IndexDay", new { dayString = "Sunday" })
+</p>
+

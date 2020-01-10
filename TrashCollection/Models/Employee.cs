@@ -17,6 +17,7 @@ namespace TrashCollection.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Zip { get; set; }
+        public DateTime SearchDate { get; set; }
 
     }
 }

@@ -108,6 +108,11 @@ namespace TrashCollection.Controllers
             }
             else
             {
+                string userId = User.Identity.GetUserId();
+                DateTime defaultDateSearch = DateTime.Now;
+                var employeeToChange = context.Employees.Where(e => e.ApplicationId == userId).FirstOrDefault();
+                employeeToChange.SearchDate = defaultDateSearch;
+                context.SaveChanges();
                 return RedirectToAction("Index", "Employee", model);
             }
         }

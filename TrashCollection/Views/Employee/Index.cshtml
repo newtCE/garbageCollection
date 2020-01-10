@@ -82,11 +82,20 @@
         @Html.DisplayFor(modelItem => item.ConfirmPickup)
     </td>
     <td>
-        @Html.ActionLink("Confirm Pickup", "Confirm", new { id = item.ID }) |
-        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+        @Html.ActionLink("Confirm Pickup", "Confirm", new { id = item.ID })
     </td>
 </tr>
+
 }
 
 </table>
+<p>
+    @Html.ActionLink("View Today's Pickups Including Special Pickups", "Index")<br />
+    @Html.ActionLink("View Monday Pickups Only", "IndexDay", new { dayString="Monday"})<br />
+    @Html.ActionLink("View Tuesday Pickups Only", "IndexDay", new { dayString="Tuesday"})<br />
+    @Html.ActionLink("View Wednesday Pickups Only", "IndexDay", new { dayString="Wednesday"})<br />
+    @Html.ActionLink("View Thursday Pickups Only", "IndexDay", new { dayString="Thursday"})<br />
+    @Html.ActionLink("View Friday Pickups Only", "IndexDay", new { dayString="Friday"})<br />
+    @Html.ActionLink("View Saturday Pickups Only", "IndexDay", new { dayString="Saturday"})<br />
+    @Html.ActionLink("View Sunday Pickups Only", "IndexDay", new { dayString="Sunday"})
+</p>
