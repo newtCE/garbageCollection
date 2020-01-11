@@ -20,7 +20,7 @@ namespace TrashCollection.Controllers
             {
                 employee = _context.Employees.Where(e => e.ApplicationId == userId).FirstOrDefault();
             }
-            string todaysDate = employee.SearchDate.ToShortDateString();
+            string todaysDate = DateTime.Now.ToShortDateString();
             string dayToDisplay = DateTime.Now.DayOfWeek.ToString();
             var customerInZip = _context.Customers.Where(c => c.Zip == employee.Zip && c.PickupDay==dayToDisplay||c.Zip==employee.Zip && c.ExtraPickupDate==todaysDate).ToList();
             return View(customerInZip);
@@ -31,6 +31,7 @@ namespace TrashCollection.Controllers
             var employee = _context.Employees.Where(e => e.ApplicationId == userId).FirstOrDefault();
             string dayToDisplay = DayString;
             var customerInZip = _context.Customers.Where(c => c.Zip == employee.Zip && c.PickupDay == dayToDisplay).ToList();
+            ViewBag.dayToDisplay = dayToDisplay;
             return View(customerInZip);
         }
         // GET: Employee/Details/5
@@ -45,6 +46,19 @@ namespace TrashCollection.Controllers
             confirmPickupUpdate.Balance += 1.50;
             _context.SaveChanges();
             return RedirectToAction("Index","Employee");
+        }
+        public ActionResult ConfirmDayOnly(int id,string DayString)
+        {
+            var confirmPickupUpdate = _context.Customers.Where(c => c.ID == id).FirstOrDefault();
+            confirmPickupUpdate.ConfirmPickup = true;
+            confirmPickupUpdate.Balance += 1.50;
+            _context.SaveChanges();
+            string userId = User.Identity.GetUserId();
+            var employee = _context.Employees.Where(e => e.ApplicationId == userId).FirstOrDefault();
+            string dayToDisplay = DayString;
+            var customerInZip = _context.Customers.Where(c => c.Zip == employee.Zip && c.PickupDay == dayToDisplay).ToList();
+            ViewBag.dayToDisplay = dayToDisplay;
+            return View(customerInZip);
         }
 
         // GET: Employee/Create
@@ -63,7 +77,6 @@ namespace TrashCollection.Controllers
                 employee.ApplicationId = userId;
                 _context.Employees.Add(employee);
                 _context.SaveChanges();
-                //var customerInZip = _context.Customers.Where(e=>e.Zip == employee.Zip).ToList();
                 return RedirectToAction("Index",employee);
             }
             catch

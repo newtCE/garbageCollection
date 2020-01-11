@@ -280,6 +280,7 @@
     <Content Include="Views\Customer\SetSpecialPickup.cshtml" />
     <Content Include="Views\Customer\ChangeSuspend.cshtml" />
     <Content Include="Views\Employee\IndexDay.cshtml" />
+    <Content Include="Views\Employee\ConfirmDayOnly.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

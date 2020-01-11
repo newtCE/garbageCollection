@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<TrashCollection.Models.Customer>
 
 @{
-    ViewBag.Title = "IndexDay";
+    ViewBag.Title = "ConfirmDayOnly";
 }
 
 <h2>Employee Hub</h2>
@@ -83,7 +83,7 @@
                 @Html.DisplayFor(modelItem => item.ConfirmPickup)
             </td>
             <td>
-                @Html.ActionLink("Confirm Pickup", "ConfirmDayOnly", new { id = item.ID,dayString = ViewBag.dayToDisplay })
+                @Html.ActionLink("Confirm Pickup", "ConfirmDayOnly", new { id = item.ID, dayString = ViewBag.dayToDisplay })
             </td>
         </tr>
 
@@ -100,4 +100,5 @@
     @Html.ActionLink("View Saturday Pickups Only", "IndexDay", new { dayString = "Saturday" })<br />
     @Html.ActionLink("View Sunday Pickups Only", "IndexDay", new { dayString = "Sunday" })
 </p>
+
 
